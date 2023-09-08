@@ -18,6 +18,7 @@ export default function AddExpenseForm() {
 
   const onClick = (event) => {
     event.preventDefault();
+    if (name === "" || cost === "") return;
     const expense = {
       id: uuidv4(),
       name,
