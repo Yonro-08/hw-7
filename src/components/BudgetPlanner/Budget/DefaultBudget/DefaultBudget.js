@@ -1,7 +1,7 @@
 import { Box, Button } from "@chakra-ui/react";
-import { styleBoxBudget } from "../../../styleTemplates";
+import { styleBoxBudget } from "../../../../styleTemplates";
 
-export default function DefaultBudget({ setIsEditing, budget, styleBox }) {
+export default function DefaultBudget({ setIsEditing, budget }) {
   return (
     <Box style={styleBoxBudget}>
       <span>Budget: {budget} KZT</span>

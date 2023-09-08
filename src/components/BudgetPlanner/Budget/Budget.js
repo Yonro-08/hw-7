@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 
-import { AppContext } from "../../context/AppContext";
+import { AppContext } from "../../../context/AppContext";
 import DefaultBudget from "./DefaultBudget/DefaultBudget";
 import UpdateBudget from "./UpdateBudget/UpdateBudget";
 

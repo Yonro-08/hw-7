@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Alert } from "@chakra-ui/react";
 
-import { AppContext } from "../../context/AppContext";
+import { AppContext } from "../../../context/AppContext";
 
 export default function ExpenseTotal() {
   const { expenses } = useContext(AppContext);

@@ -1,9 +1,9 @@
 import { Box, Button, Input } from "@chakra-ui/react";
 
-import { styleBoxBudget } from "../../../styleTemplates";
+import { styleBoxBudget } from "../../../../styleTemplates";
 
 export default function UpdateBudget({ budget, setIsEditing, dispatch }) {
-  const UpdateBadget = (event) => {
+  const UpdateBudget = (event) => {
     if (!isNaN(event.target.value) && event.target.value.length < 19) {
       dispatch({ type: "UPDATE_BUDGET", payload: event.target.value });
     }
@@ -11,7 +11,7 @@ export default function UpdateBudget({ budget, setIsEditing, dispatch }) {
 
   return (
     <Box style={styleBoxBudget} gap="20px">
-      <Input value={budget} bg="white" onChange={UpdateBadget} />
+      <Input value={budget} bg="white" onChange={UpdateBudget} />
       <Button onClick={() => setIsEditing(false)} variant="brand">
         Save
       </Button>

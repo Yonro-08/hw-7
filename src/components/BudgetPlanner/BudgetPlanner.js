@@ -1,5 +1,9 @@
 import { Grid } from "@chakra-ui/react";
 
+import Budget from "./Budget/Budget";
+import Remaining from "./Remaining/Remaining";
+import ExpenseTotal from "./ExpenseTotal/ExpenseTotal";
+
 export default function BudgetPlanner() {
   return (
     <Grid
