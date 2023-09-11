@@ -7,8 +7,6 @@ import { defaultTheme } from "./styleTemplates";
 
 import "./global.css";
 
-console.log(defaultTheme);
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

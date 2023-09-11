@@ -12,21 +12,14 @@ const AppReducer = (state, action) => {
       console.log(action.payload);
       return {
         ...state,
-        search: action.payload,
+        searchValue: action.payload,
       };
     }
     case "DELETE_EXPENSE": {
+      console.log(state.expenses);
       return {
         ...state,
         expenses: state.expenses.filter(
-          (expense) => expense.id !== action.payload
-        ),
-      };
-    }
-    case "DELETE_SEARCH": {
-      return {
-        ...state,
-        search: state.expenses.filter(
           (expense) => expense.id !== action.payload
         ),
       };
@@ -51,7 +44,7 @@ const initialState = {
     { id: 4, name: "Fuel", cost: 40 },
     { id: 5, name: "Child Care", cost: 500 },
   ],
-  search: null,
+  searchValue: "",
 };
 
 export const AppContext = createContext();
@@ -64,7 +57,7 @@ export const AppProvider = (props) => {
       value={{
         budget: state.budget,
         expenses: state.expenses,
-        search: state.search,
+        searchValue: state.searchValue,
         dispatch,
       }}
     >

@@ -15,16 +15,17 @@ const ListItemStyle = {
 };
 
 export default function ExpensesList() {
-  const { expenses, dispatch, search } = useContext(AppContext);
+  const { expenses, dispatch, searchValue } = useContext(AppContext);
 
-  console.log(search);
+  const newExpenses = expenses.filter((expense) =>
+    expense.name.toLowerCase().includes(searchValue.toLowerCase())
+  );
 
   return (
     <Box>
-      <SearchExpense expenses={expenses} dispatch={dispatch} search={search} />
+      <SearchExpense dispatch={dispatch} />
       <List maxW="100%" border={"1px solid black"} borderBottom="none">
-        {(search === null ? expenses : search).map((expense) => {
-          console.log(expense);
+        {newExpenses.map((expense) => {
           return (
             <ExpensesItem
               key={expense.id}

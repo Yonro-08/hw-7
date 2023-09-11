@@ -25,10 +25,6 @@ export default function ExpensesItem({ id, style, name, cost }) {
       type: "DELETE_EXPENSE",
       payload: id,
     });
-    dispatch({
-      type: "DELETE_SEARCH",
-      payload: id,
-    });
   };
 
   return (
