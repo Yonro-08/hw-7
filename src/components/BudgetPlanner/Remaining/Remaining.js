@@ -1,10 +1,11 @@
-import { useContext } from "react";
 import { Alert } from "@chakra-ui/react";
 
-import { AppContext } from "../../../context/AppContext";
+import { useBudget } from "../../../store/useBudget";
+import { useExpenses } from "../../../store/useExpenses";
 
 export default function Remaining() {
-  const { budget, expenses } = useContext(AppContext);
+  const { budget } = useBudget();
+  const { expenses } = useExpenses();
 
   const totalExpenses = expenses.reduce((total, item) => {
     return (total = total + item.cost);

@@ -2,9 +2,13 @@ import { Box, Button, Input } from "@chakra-ui/react";
 
 import { styleBoxBudget } from "../../../../styleTemplates";
 import { useState } from "react";
+import { useBudget } from "../../../../store/useBudget";
 
-export default function UpdateBudget({ budget, setIsEditing, dispatch }) {
+export default function UpdateBudget({ setIsEditing }) {
+  const { budget, updateBudget } = useBudget();
+
   const [inputValue, setInputValue] = useState(budget);
+
   const onChangeInput = (event) => {
     if (!isNaN(event.target.value) && event.target.value.length < 19) {
       setInputValue(event.target.value);
@@ -14,7 +18,7 @@ export default function UpdateBudget({ budget, setIsEditing, dispatch }) {
   const onClickSave = () => {
     if (inputValue === "") return;
     setIsEditing(false);
-    dispatch({ type: "UPDATE_BUDGET", payload: inputValue });
+    updateBudget(inputValue);
   };
 
   return (

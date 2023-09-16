@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { InputGroup, InputLeftElement, Input } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
+import { useExpenses } from "../../store/useExpenses";
 
-export default function SearchExpense({ dispatch }) {
+export default function SearchExpense() {
   const [searchValue, setSearchValue] = useState("");
+
+  const { changeSearchExpenses } = useExpenses();
 
   const onChangeSearchValue = (e) => {
     if (e.code === "Enter") {
-      dispatch({ type: "ADD_SEARCH", payload: searchValue });
+      changeSearchExpenses(searchValue);
     }
   };
 

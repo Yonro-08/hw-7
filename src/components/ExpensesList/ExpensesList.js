@@ -1,10 +1,8 @@
-import { useContext } from "react";
-import { Box, List } from "@chakra-ui/react";
-
-import { AppContext } from "../../context/AppContext";
+import { Box, Heading, List } from "@chakra-ui/react";
 
 import ExpensesItem from "./ExpenseItem/ExpenseItem";
 import SearchExpense from "../SearchExpense/SearchExpense";
+import { useExpenses } from "../../store/useExpenses";
 
 const ListItemStyle = {
   display: "flex",
@@ -15,24 +13,25 @@ const ListItemStyle = {
 };
 
 export default function ExpensesList() {
-  const { expenses, dispatch, searchValue } = useContext(AppContext);
+  const { expenses, searchExpenses } = useExpenses();
 
   const newExpenses = expenses.filter((expense) =>
-    expense.name.toLowerCase().includes(searchValue.toLowerCase())
+    expense.name.toLowerCase().includes(searchExpenses.toLowerCase())
   );
 
   return (
     <Box>
-      <SearchExpense dispatch={dispatch} />
+      <Heading as="h3" my="20px" fontSize={30}>
+        Expenses
+      </Heading>
+      <SearchExpense />
       <List maxW="100%" border={"1px solid black"} borderBottom="none">
         {newExpenses.map((expense) => {
           return (
             <ExpensesItem
               key={expense.id}
-              id={expense.id}
+              expense={expense}
               style={ListItemStyle}
-              name={expense.name}
-              cost={expense.cost}
             ></ExpensesItem>
           );
         })}

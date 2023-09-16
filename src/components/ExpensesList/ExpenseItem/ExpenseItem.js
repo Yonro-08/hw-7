@@ -1,8 +1,7 @@
-import { useContext } from "react";
 import { ListItem, Icon } from "@chakra-ui/react";
 import { TiDelete } from "react-icons/ti";
 
-import { AppContext } from "../../../context/AppContext";
+import { useExpenses } from "../../../store/useExpenses";
 
 const styleBox = {
   display: "flex",
@@ -17,22 +16,19 @@ const styleSpan = {
   borderRadius: "30px",
 };
 
-export default function ExpensesItem({ id, style, name, cost }) {
-  const { dispatch } = useContext(AppContext);
-
-  const handleDeleteExpense = () => {
-    dispatch({
-      type: "DELETE_EXPENSE",
-      payload: id,
-    });
-  };
+export default function ExpensesItem({ expense, style }) {
+  const { deleteExpense } = useExpenses();
 
   return (
     <ListItem style={style}>
-      {name}
+      {expense.name}
       <div style={styleBox}>
-        <span style={styleSpan}>{cost} KZT</span>
-        <Icon as={TiDelete} boxSize={5} onClick={handleDeleteExpense}></Icon>
+        <span style={styleSpan}>{expense.cost} KZT</span>
+        <Icon
+          as={TiDelete}
+          boxSize={5}
+          onClick={() => deleteExpense(expense.id)}
+        ></Icon>
       </div>
     </ListItem>
   );
