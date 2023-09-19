@@ -9,8 +9,9 @@ export const useExpenses = create((set, get) => ({
     { id: 5, name: "Child Care", cost: 500 },
   ],
   searchExpenses: "",
+  totalExpenses: 0,
 
-  totalExpenses: () => {
+  setTotalExpenses: () => {
     return get().expenses.reduce((total, item) => {
       return (total = total + item.cost);
     }, 0);
